@@ -1,0 +1,12 @@
+.popup__modal {
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+@media screen and (max-width: 530px) {
+    .popup__modal {
+        width: 282px;
+    }
+}

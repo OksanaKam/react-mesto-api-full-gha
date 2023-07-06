@@ -1,0 +1,6 @@
+.header__group {
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+    justify-content: space-between;
+}
