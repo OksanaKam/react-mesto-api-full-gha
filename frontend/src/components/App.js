@@ -52,7 +52,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  useEffect(() => {
+  useEffect((e) => {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([profileUser, cardsArray]) => {
