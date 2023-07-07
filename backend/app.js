@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
-// const cors = require('cors');
-const cors = require('./middlewares/cors');
+const cors = require('cors');
+// const cors = require('./middlewares/cors');
 const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
@@ -15,6 +15,11 @@ const { REGEX_PASSWORD } = require('./utils/constants');
 const NotFoundError = require('./errors/not-found-err');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+const corsOptions = {
+  origin: 'https://oksanakam.nomoreparties.sbs',
+  optionsSuccessStatus: 200,
+};
 
 require('dotenv').config();
 
@@ -32,8 +37,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors());
-app.use(cors);
+app.use(cors(corsOptions));
+// app.use(cors);
 app.use(requestLogger);
 
 app.get('/crash-test', () => {

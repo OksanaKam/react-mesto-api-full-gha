@@ -1,4 +1,5 @@
 export const BASE_URL = 'https://api.oksanakam.nomoreparties.sbs';
+//export const BASE_URL = 'http://localhost:3000';
 
 export function checkResponse(res) {
   if (res.ok) {
@@ -8,7 +9,7 @@ export function checkResponse(res) {
 }
 
 function request(endpoint, options) {
-  return fetch(`${BASE_URL}/${endpoint}`, options).then(checkResponse)
+  return fetch(`${BASE_URL}/${endpoint}`, options).then(checkResponse);
 }
 
 export const register = (email, password) => {
