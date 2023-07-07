@@ -53,7 +53,8 @@ function App() {
   },[]);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    const token = localStorage.getItem('jwt');
+    if (token) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([profileUser, cardsArray]) => {
         setCurrentUser(profileUser);
