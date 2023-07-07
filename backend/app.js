@@ -62,12 +62,11 @@ app.post('/signin', celebrate({
 app.use(auth, routerUsers);
 app.use(auth, routerCards);
 
-app.use(errorLogger);
-
 app.use(auth, (req, res, next) => {
   next(new NotFoundError('Запрашиваемый ресурс не найден'));
 });
 
+app.use(errorLogger);
 app.use(errors());
 
 app.use(errorHandler);

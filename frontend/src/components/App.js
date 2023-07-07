@@ -33,7 +33,7 @@ function App() {
   const navigate = useNavigate();
 
   function checkToken() {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('jwt');
       if (token) {
         auth.checkToken(token)
         .then((res) => {
@@ -52,7 +52,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  useEffect((e) => {
+  useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([profileUser, cardsArray]) => {
@@ -169,7 +169,7 @@ function App() {
     auth.login(email, password)
     .then(data => {
       if (data.token) {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         setEmail(email);
         setSucceed(true);
@@ -178,13 +178,14 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
+      //setLoggedIn(false);
       setSucceed(false);
       handleInfoTooltipClick();
     });
   }
 
   function handleSignout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     setEmail('');
     setLoggedIn(false);
     navigate('/signin');
