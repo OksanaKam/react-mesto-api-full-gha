@@ -1,7 +1,7 @@
 const allowedCors = [
   'http://localhost:3000',
-  'https://oksanakam.nomoreparties.sbs',
-  'http://oksanakam.nomoreparties.sbs',
+  // 'https://oksanakam.nomoreparties.sbs',
+  // 'http://oksanakam.nomoreparties.sbs',
   'https://api.oksanakam.nomoreparties.sbs',
   'http://api.oksanakam.nomoreparties.sbs',
 ];

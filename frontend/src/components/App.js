@@ -33,7 +33,7 @@ function App() {
   const navigate = useNavigate();
 
   function checkToken() {
-      const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem('token');
       if (token) {
         auth.checkToken(token)
         .then((res) => {
@@ -53,8 +53,7 @@ function App() {
   },[]);
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    if (token) {
+    if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([profileUser, cardsArray]) => {
         setCurrentUser(profileUser);
@@ -170,7 +169,7 @@ function App() {
     auth.login(email, password)
     .then(data => {
       if (data.token) {
-        localStorage.setItem('jwt', data.token);
+        localStorage.setItem('token', data.token);
         setLoggedIn(true);
         setEmail(email);
         setSucceed(true);
@@ -186,7 +185,7 @@ function App() {
   }
 
   function handleSignout() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     setEmail('');
     setLoggedIn(false);
     navigate('/signin');
