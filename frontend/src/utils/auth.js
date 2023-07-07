@@ -1,5 +1,4 @@
 export const BASE_URL = 'https://api.oksanakam.nomoreparties.sbs';
-//export const BASE_URL = 'http://localhost:3000';
 
 export function checkResponse(res) {
   if (res.ok) {

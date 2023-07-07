@@ -46,24 +46,7 @@ function App() {
         .catch(console.error);
       }
   }
-/*
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-      if (token) {
-        auth.checkToken(token)
-        .then((res) => {
-          //if (res) {
-            setEmail(res.email);
-            setLoggedIn(true);
-            navigate('/', {replace: true})
-          //}
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      }
-  }, []);
-  */
+
   useEffect(() => {
     checkToken();
   // eslint-disable-next-line react-hooks/exhaustive-deps

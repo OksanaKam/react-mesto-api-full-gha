@@ -1,7 +1,6 @@
 class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
-        //this._headers = options.headers;
     }
     
     _checkResponse(res) {
@@ -18,7 +17,6 @@ class Api {
     getUserInfo() {
         return this._request(`users/me`, {
             method: 'GET',
-            //headers: this._headers,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -29,7 +27,6 @@ class Api {
     getInitialCards() {
         return this._request(`cards`, {
             method: 'GET',
-            //headers: this._headers,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -40,7 +37,6 @@ class Api {
     postUserInfo(userData) {
         return this._request(`users/me`, {
             method: 'PATCH',
-            //headers: this._headers,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -55,7 +51,6 @@ class Api {
     addNewCard(data) {
         return this._request(`cards`, {
             method: 'POST',
-            //headers: this._headers,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -70,7 +65,6 @@ class Api {
     changeAvatar(userData) {
         return this._request(`users/me/avatar`, {
             method: 'PATCH',
-            //headers: this._headers,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -84,7 +78,6 @@ class Api {
     deleteCard(cardId) {
         return this._request(`cards/${cardId}`, {
             method: 'DELETE',
-            //headers: this._headers
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -95,7 +88,6 @@ class Api {
     addLike(cardId) {
         return this._request(`cards/${cardId}/likes`, {
             method: 'PUT',
-            //headers: this._headers
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -106,7 +98,6 @@ class Api {
     removeLike(cardId) {
         return this._request(`cards/${cardId}/likes`, {
             method: 'DELETE',
-            //headers: this._headers
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -117,13 +108,6 @@ class Api {
 
 const api = new Api({
     baseUrl: 'https://api.oksanakam.nomoreparties.sbs',
-    //baseUrl: 'http://localhost:3000',
-    /*
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-    },
-    */
 });
 
 export default api;
