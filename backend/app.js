@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -14,8 +15,6 @@ const { REGEX_PASSWORD } = require('./utils/constants');
 const NotFoundError = require('./errors/not-found-err');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-require('dotenv').config();
 
 const { PORT = 3000 } = process.env;
 
